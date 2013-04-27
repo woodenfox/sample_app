@@ -1,5 +1,8 @@
 require 'spec_helper'
-describe "Static page(s)" do
+describe "Static pages" do
+
+	let(:base_title) {'UX Angels'}
+
 	describe "Home page" do
  		it "should have the content 'Sample App'" do
  			visit '/static_pages/home'
@@ -34,6 +37,18 @@ describe "Static page(s)" do
 			visit '/static_pages/about'
 			page.should have_selector('title', 
 				:text => 'UX Angels | About Us')
+		end
+	end
+	describe "Contact Us" do
+		it "should have the text 'Contact Us' visibile" do
+			visit '/static_pages/contact'
+			page.should have_selector('h1',
+				:text => 'Contact Us')
+		end
+		it "should have right title" do
+			visit '/static_pages/contact'
+			page.should have_selector('title', 
+				:text => 'UX Angels | Contact Us')
 		end
 	end
 end
