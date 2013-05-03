@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 describe "Static pages" do
 
 	let(:base_title) {'UX Angels'}
@@ -6,7 +7,7 @@ describe "Static pages" do
 
 	describe "Home page" do
 		before {visit root_path}
-		it { should have_selector('h1', text: 'Sample App')}
+		it { should have_selector('h1', text: 'Welcome to UX Angels')}
     	it { should have_selector('title', :text => 'UX Angels')}
    		it { should have_selector('footer')}
    		it { should have_selector('header')}
