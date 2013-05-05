@@ -2,39 +2,41 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-	let(:base_title) {'UX Angels'}
 	subject {page}
 
-	describe "Home page" do
-		before {visit root_path}
-		it { should have_selector('h1', text: 'Welcome to UX Angels')}
-    	it { should have_selector('title', :text => 'UX Angels')}
-   		it { should have_selector('footer')}
+	shared_examples_for "all static pages" do
+		it { should have_selector('h1', text: heading)}
+		it { should have_selector('title', text: page_title) }
+	    it { should have_selector('footer')}
    		it { should have_selector('header')}
 	end
 
+	describe "Home page" do
+		before {visit root_path}
+		let(:heading) {'Welcome to UX Angels'}
+    	let(:page_title) {'UX Angels'}
+    	it_should_behave_like "all static pages"
+    	it {should_not have_selector 'title', text: '| Home'}
+    end
+
 	describe "Help Page" do
 		before {visit help_path}
-		it { should have_selector('h1', text: 'Help')}
-		it { should have_selector('title', text: 'UX Angels | Help')}
+		let(:heading) {'Help'}
+		let(:page_title) {'UX Angels | Help'}
+    	it_should_behave_like "all static pages"
 	end   
 
 	describe "About Page" do
 		before {visit about_path}
-		it {should have_selector('h1', text: 'About Us')}
-		it {should have_selector('title', text: 'UX Angels | About Us')}
+		let(:heading) {'About Us'}
+		let(:page_title) {'UX Angels | About Us'}
+		it_should_behave_like "all static pages"		
 	end
 
 	describe "Contact Us" do
-		it "should have the text 'Contact Us' visibile" do
-			visit contact_path
-			page.should have_selector('h1',
-				:text => 'Contact Us')
-		end
-		it "should have right title" do
-			visit contact_path
-			page.should have_selector('title', 
-				:text => 'UX Angels | Contact Us')
-		end
+		before {visit contact_path}
+		let(:heading) {'Contact Us'}
+		let(:page_title) {'UX Angels | Contact Us'}
+		it_should_behave_like "all static pages"
 	end
 end
