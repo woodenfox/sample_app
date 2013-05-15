@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 		if @user.save
 			flash[:sucess] = "Welcome to UX Angels!"
 			redirect_to @user
+			sign_in @user
 		else
 			#flash[:error] = @user.errors.full_messages
 			render 'new'

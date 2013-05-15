@@ -34,11 +34,10 @@ describe "User pages" do
 				fill_in "Email",  		with: "user@example.com"
 				fill_in "Password",  	with: "fakepassword"
 				fill_in "Confirmation", with: "fakepassword" 
+				click_button submit
 			end
-			it "should create a valid user" do 
-				expect { click_button submit}.to change(User, :count).by(1)
-			end	
+			it {should have_link('Sign out')}
 		end
-	end	
 
+	end	
 end
