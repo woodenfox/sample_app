@@ -12,6 +12,20 @@ $grayMediumLight: #eaeaea;
 	box-sizing: border-box;
 }
 
+body {
+padding-top:60px;
+}
+
+@media (max-width: 979px) {
+	body { padding-top: 0; }
+}
+
+@media (max-width: 480px) {
+	.hero-unit .btn {
+		display:block;
+	}
+}
+
 .users {
 	list-style:none;
 	margin:0;
@@ -25,17 +39,87 @@ $grayMediumLight: #eaeaea;
 	}
 }
 
-.jumbotron {
-color:#FFF;
-background: rgb(73,192,240); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(73,192,240,1) 0%, rgba(40,122,204,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(73,192,240,1)), color-stop(100%,rgba(40,122,204,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(73,192,240,1) 0%,rgba(40,122,204,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(73,192,240,1) 0%,rgba(40,122,204,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(73,192,240,1) 0%,rgba(40,122,204,1) 100%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(73,192,240,1) 0%,rgba(40,122,204,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49c0f0', endColorstr='#287acc',GradientType=0 ); /* IE6-9 */
+
+.btn-primary {
+	background: rgb(249,198,103); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(249,198,103,1) 0%, rgba(247,150,33,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(249,198,103,1)), color-stop(100%,rgba(247,150,33,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(249,198,103,1) 0%,rgba(247,150,33,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(249,198,103,1) 0%,rgba(247,150,33,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(249,198,103,1) 0%,rgba(247,150,33,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(249,198,103,1) 0%,rgba(247,150,33,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9c667', endColorstr='#f79621',GradientType=0 ); /* IE6-9 */
+
+	-moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.5);
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.5);
+	
+	&:hover {
+		-moz-box-shadow: 0px 0px 2px rgba(0,0,0,0.7);
+		-webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.7);
+		box-shadow: 0px 0px 2px rgba(0,0,0,0.7);		
+	}
+
 }
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
+  color: white;
+  background-color: #0044cc;
+  *background-color: #003bb3;
+}
+
+.btn-primary:active, .btn-primary.active {
+  background-color: #003399 \9;
+}
+
+.jumbotron {
+	color:#FFF;
+	/* gradient */
+	background: rgb(73,192,240); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(73,192,240,1) 0%, rgba(40,122,204,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(73,192,240,1)), color-stop(100%,rgba(40,122,204,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(73,192,240,1) 0%,rgba(40,122,204,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(73,192,240,1) 0%,rgba(40,122,204,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(73,192,240,1) 0%,rgba(40,122,204,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(73,192,240,1) 0%,rgba(40,122,204,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49c0f0', endColorstr='#287acc',GradientType=0 ); /* IE6-9 */
+	/* end gradient */
+	position: relative;
+	padding: 40px 20px;
+	margin-top: -20px;
+	margin-right: -20px;
+	margin-left: -20px;
+
+	h1 {
+		font-size: 60px;
+		font-weight: bold;
+		letter-spacing: -1px;
+		line-height: 1;
+	}
+
+	h2 {
+		color: white;
+	}
+
+	&:after {
+		content: '';
+		display: block;
+		/* position: absolute; */
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		/* background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
+		opacity: .4; */
+	}
+
+	a {
+		color:white;
+	}
+
+}
+
+
 
 /* UNIVERSAL */
 
@@ -61,20 +145,6 @@ textarea {
 /* TYPOGRAPHY */
 h1, h2, h3, h4, h5, h6 {
 	line-height: 1;
-}
-
-.jumbotron h1 {
-	font-size: 60px;
-	font-weight: bold;
-	letter-spacing: -1px;
-	line-height: 1;
-}
-
-.jumbotron {
-	padding: 40px 20px;
-	margin-top: -20px;
-	margin-right: -20px;
-	margin-left: -20px;
 }
 
 h1 {
@@ -148,7 +218,7 @@ line-height: 1;
 	clear:both;
 	float:left;
 	width:100%;
-	margin-top:45px;
+	margin-top:25px;
 	@include box_sizing;
 }
 

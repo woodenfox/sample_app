@@ -1,15 +1,39 @@
-<div class="center hero-unit">
+<div class="jumbotron center">
 	<h1>Welcome to UX Angels</h1>
 	<h2>This is the home page for
 		<a href="http://www.uxangels.org/">
 			UX Angels
 		</a>
 	</h2>
-	<!-- Car2go.getRes("vehicles", "&loc=seattle") %> -->
-	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary btn-white" %>
 </div>
-	
-https://www.car2go.com/api/v2.1/vehicles?oauth_consumer_key=Car2Square&format=json&loc=seattle
+
+<div class="container">
+<div class="marketing">
+
+    <h1>What the hell is this?</h1>
+    <p class="marketing-byline">
+    	<%=	Faker::Lorem.paragraph(sentence_count = 2) %>
+    </p>
+
+    <div class="row-fluid">
+      <div class="span4">
+        <h2>By nerds, for nerds.</h2>
+        <p><%=	Faker::Lorem.paragraph(sentence_count = 3) %></p>
+      </div>
+      <div class="span4">
+        <h2>Made for everyone.</h2>
+        <p><%=	Faker::Lorem.paragraph(sentence_count = 3) %></p>
+      </div>
+      <div class="span4">
+        <h2>Packed with features.</h2>
+        <p><%=	Faker::Lorem.paragraph(sentence_count = 3) %></p>
+      </div>
+    </div>
+</div>
+</div>
+<!-- <p>
+ https://www.car2go.com/api/v2.1/vehicles?oauth_consumer_key=Car2Square&format=json&loc=seattle
 
 	47.62516, -122.30114
-	47.62870, -122.30689
+	47.62870, -122.30689 </p> -->
