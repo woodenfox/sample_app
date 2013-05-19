@@ -8,7 +8,15 @@
 				<%= @user.name %>
 			</h1>
 			<p>Email: <%= @user.email %></p>
-			<p><%= User.find(params[:id]).created_at %>
+			<p>
+				<!--Edit User -->
+				<% if is_self %>
+					<%= link_to 'Edit', edit_user_path(current_user) %>
+				<% end %>
+			</p>
+			<p>
+			<%=	Faker::Lorem.paragraph(sentence_count = 5) %>
+			</p>
 		</section>
 	</aside>
 </div>

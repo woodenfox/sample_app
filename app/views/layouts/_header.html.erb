@@ -1,14 +1,35 @@
 <header class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+			
+			<!-- BUTTON NAV BAR #########   -->
+
+			<%= link_to "Makers", root_path, id: "logo" %>
+
+			<a class="btn btn-navbar" data-toggle="collapse" data-target="#second-nav">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
 
-			<%= link_to "UX Angels", root_path, id: "logo" %>
-			<nav class="nav-collapse collapse">
+			<!-- PROFILE PICTURE MENUE ####   -->
+
+			<% if signed_in? %>
+				<a class="btn-navbar" data-toggle="collapse" data-target="#first-nav">
+				<%= gravatar_for(current_user, size: 25) %>
+				</a>
+						
+				<nav id= "first-nav" class="nav-collapse collapse">
+				<ul class="nav pull-right">
+					<li><%= link_to "Profile", current_user %></li>
+					<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+					<li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+				</ul>
+				</nav>
+
+			<% end %>
+
+			<nav id="second-nav" class="nav-collapse collapse">
 				<ul class="nav pull-right">
 					<li><%= link_to "Home", '/' %>
 					</li>
@@ -16,14 +37,14 @@
 					<li><%= link_to "About Us", about_path %></li>
 					<li><%= link_to "Contact Us", contact_path %></li>
 					<% if signed_in? %>
-						<li><%= link_to "Users", '#' %></li>
+						<li><%= link_to "Users", users_path %></li>
 						<li id="fat-menu" class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								Account <b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
 								<li><%= link_to "Profile", current_user %></li>
-								<li><%= link_to "Settings", '#' %></li>
+								<li><%= link_to "Settings", edit_user_path(current_user) %></li>
 								<li><%= link_to "Sign out", signout_path, method: "delete" %></li>
 							</ul>
 						</li>
@@ -32,6 +53,7 @@
 					<% end %>
 				</ul>
 			</nav>
+
 		</div>
 	</div>
 </header>

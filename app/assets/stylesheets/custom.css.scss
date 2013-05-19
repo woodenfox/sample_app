@@ -1,5 +1,6 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
+@import url(http://fonts.googleapis.com/css?family=Quando);
 
 /* mixins, variables, etc. */
 
@@ -9,6 +10,19 @@ $grayMediumLight: #eaeaea;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+.users {
+	list-style:none;
+	margin:0;
+	li {
+		overflow:auto;
+		padding: 10px 0;
+		border-top: 1px solid $grayLighter;
+	}
+	li:last-child {
+		border-bottom: 1px solid $grayLighter;
+	}
 }
 
 .jumbotron {
@@ -90,11 +104,11 @@ p {
 float: left;
 margin-right: 10px;
 font-size:1.7em;
-color: $grayDarker;
-text-transform: uppercase;
+color: white;
 letter-spacing: -1px;
 padding-top: 9px;
 font-weight: bold;
+font-family: 'Quando', serif; /* GOOGLE FONT */
 line-height: 1;
 &:hover {
 	color:white;

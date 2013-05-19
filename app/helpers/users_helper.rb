@@ -10,4 +10,9 @@ module UsersHelper
 		image_tag(gravatar_url, 
 			alt: user.name, class: "gravatar")
 	end	
+
+	def is_self
+		current_user == User.find(params[:id])
+	end
+
 end
