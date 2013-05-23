@@ -13,6 +13,23 @@ module SessionsHelper
 		user == current_user
 	end
 
+# ----------- CONTROLLER FILTERS ----------------------
+
+	def signed_in_user
+		unless signed_in?
+			store_location
+			redirect_to signin_path, notice: "Please sign in."
+		end
+	end
+
+	def admin_user
+		unless current_user.admin?
+			redirect_to root_path, notice: "Sorry hacker"
+		end
+	end
+
+# ----------------------------------------------------	
+
 	def current_user=(user)
 		@current_user = user
 	end

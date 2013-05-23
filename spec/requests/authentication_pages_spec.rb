@@ -38,7 +38,7 @@ end
 
 describe "authorization" do 
 
-	describe "for signed out visitors" do 
+	describe "for non-signed-in visitors" do 
 		let(:user) { FactoryGirl.create(:user) }
 
 		describe "in the Users controller" do 
@@ -58,6 +58,22 @@ describe "authorization" do
 				it_behaves_like "the sign in page"
 			end
 
+		end
+
+		describe "in the Microposts controller" do 
+			
+			describe "creating a new micropost" do 
+				before { post microposts_path }
+				specify { response.should redirect_to(signin_path) }
+			end
+
+			describe "submitting to the destroy action" do 
+				before do 
+					micropost = FactoryGirl.create(:micropost)
+					delete micropost_path(micropost)
+				end
+				specify { response.should redirect_to(signin_path) }
+			end
 		end
 
 		describe "redirect after valid sign in" do

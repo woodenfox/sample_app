@@ -13,10 +13,29 @@ describe "Static pages" do
 
 	describe "Home page" do
 		before {visit root_path}
-		let(:heading) {'Welcome to UX Angels'}
-    	let(:page_title) {'UX Angels'}
-    	it_should_behave_like "all static pages"
-    	it {should_not have_selector 'title', text: '| Home'}
+		
+		describe "signed out" do
+			let(:heading) {'Welcome to UX Angels'}
+    		let(:page_title) {'UX Angels'}
+    		it_should_behave_like "all static pages"
+    		it {should_not have_selector 'title', text: '| Home'}
+    	end
+
+    	describe "signed in" do 
+    		let(:user) {FactoryGirl.create(:user)}
+    		before do 
+    			FactoryGirl.create(:micropost, user: user, content: "Lorium ipsum dolor")
+    			FactoryGirl.create(:micropost, user: user, content: "Dolor santo chanos")
+    			sign_in user
+    			visit root_path
+    		end
+
+  		  	it "should render users feed" do 
+    			user.feed.each do |item|
+  		  			page.should have_selector("li##{item.id}", text: item.content)
+  		  		end
+    		end
+    	end
     end
 
 	describe "Help Page" do
@@ -39,4 +58,5 @@ describe "Static pages" do
 		let(:page_title) {'UX Angels | Contact Us'}
 		it_should_behave_like "all static pages"
 	end
+
 end

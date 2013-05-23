@@ -1,14 +1,36 @@
-<div class="jumbotron center">
-	<h1>Welcome to UX Angels</h1>
-	<h2>This is the home page for
-		<a href="http://www.uxangels.org/">
-			UX Angels
-		</a>
-	</h2>
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary btn-white" %>
+<% if signed_in? %>
+<div class="container">
+<div class="row">
+  <aside class="span4">
+    <selection>
+      <%= render 'shared/user_info' %>
+    </selection>
+    <selection>
+      <%= render 'shared/micropost_form' %>
+    </selection>
+  </aside>
+ <div class="row">
+    <div class="span8">
+     <h3> Your Feed </h3>   
+     <%= render 'shared/feed' %>
+    </div>
+ </div>
 </div>
 
+<% else %>
+  <div class="jumbotron center">
+  	<h1>Welcome to UX Angels</h1>
+  	<h2>This is the home page for
+  		<a href="http://www.uxangels.org/">
+  			UX Angels
+  		</a>
+  	</h2>
+   <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary btn-white" %>
+  </div>
+<% end %>
+
 <div class="container">
+
 <div class="marketing">
 
     <h1>What the hell is this?</h1>

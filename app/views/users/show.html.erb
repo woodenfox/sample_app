@@ -8,11 +8,13 @@
 				<%= gravatar_for @user %>
 				<%= @user.name %>
 			</h1>
-			<p>Email: <%= @user.email %></p>
+			<p><%= @user.email %></p>
 			<p>
 				<!--Edit User -->
 				<% if is_self %>
-					<%= link_to 'Edit', edit_user_path(current_user) %>
+					  <selection>
+    				  <%= render 'shared/micropost_form' %>
+  					  </selection>
 				<% end %>
 			</p>
 			<p>
@@ -20,5 +22,16 @@
 			</p>
 		</section>
 	</aside>
+
+<div class="span8">
+<% if @user.microposts.any? %>
+	<h3>Microposts (<%= @user.microposts.count %>)</h3>
+	<ol class="microposts">
+		<%= render @microposts %>
+	</ol>
+	<%= will_paginate @microposts %>
+<% end %>
+</div>
+
 </div>
 </div>

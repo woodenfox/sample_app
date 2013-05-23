@@ -12,11 +12,20 @@ end
 
 describe "profile" do
 	let(:user) { FactoryGirl.create(:user) }
+	let!(:m1) { FactoryGirl.create(:micropost, user: user, content: "foo")}
+	let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "bar")}		
+
 	before { visit user_path(user) }
 
 	describe "signed out page" do
 		it_behaves_like "a profile page"
 		it {should_not have_link('Edit', href: edit_user_path(user))}
+	end
+
+	describe "it should have microposts" do
+		it {should have_content(m1.content)}
+		it {should have_content(m2.content)}
+		it {should have_content(user.microposts.count)}
 	end
 
 	describe "your own page" do
@@ -27,6 +36,7 @@ describe "profile" do
 		it_behaves_like "a profile page"
 		it {should have_link('Edit', href: edit_user_path(user))}
 	end
+
 end
 
 # user list ----------------------------------
