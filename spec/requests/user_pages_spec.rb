@@ -34,7 +34,6 @@ describe "profile" do
 			visit user_path(user)
 		end
 		it_behaves_like "a profile page"
-		it {should have_link('Edit', href: edit_user_path(user))}
 	end
 
 end
