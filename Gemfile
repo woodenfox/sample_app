@@ -11,6 +11,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 
 gem 'httparty'
 gem 'multi_json'
+gem 'pusher'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
